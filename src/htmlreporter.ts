@@ -381,7 +381,22 @@ class HTMLReporter {
                   : " "
               );
               // Test Title
-              testInfo.ele("div", { class: "test-title" }, test.title);
+              try {
+                const testPayload = JSON.parse(test.title);
+                testInfo.ele("div", { class: "test-case" }, testPayload.testCase);
+                
+                const checkList = testInfo.ele("ol");
+                for (const check of testPayload.checks) {
+                  checkList.ele("li", { }, check);
+                }
+
+                if (testPayload.detailsLink) {
+                  testInfo.ele("a", { href: testPayload.detailsLink.url }, testPayload.detailsLink.text);
+                }
+              } catch (e) {
+                testInfo.ele("div", { class: "test-title" }, test.title);
+              }
+
               // Test Status
               testInfo.ele("div", { class: "test-status" }, test.status);
               // Test Duration

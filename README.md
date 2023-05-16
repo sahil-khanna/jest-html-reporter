@@ -1,3 +1,18 @@
+## This is an extension of [jest-html-reporter](https://www.npmjs.com/package/jest-html-reporter). This version allows to add the list of checks and a hyperlink to the test results. This version allows to add the list of checks and a hyperlink to the test results.
+
+## Use the below JSON payload pass it using `JSON.stringify(testPayload)`
+
+```
+const testPayload = {
+	testCase: 'Demo',
+	checks: ['Create new contact', 'Fetch the created contact', 'Delete contact'],
+	detailsLink: {
+		text: 'JIRA-1987',
+		url: 'https://jira.atlassian.com/browse/JIRA-1987'
+	}
+}
+```
+
 <p align="center">
 	<p align="center">📜</p>
 	<h3 align="center">jest-html-reporter</h3>
