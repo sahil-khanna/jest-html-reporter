@@ -391,7 +391,7 @@ class HTMLReporter {
                 }
 
                 if (testPayload.detailsLink) {
-                  testInfo.ele("a", { href: testPayload.detailsLink.url }, testPayload.detailsLink.text);
+                  testInfo.ele("a", { href: testPayload.detailsLink.url, target: "_blank" }, testPayload.detailsLink.text);
                 }
               } catch (e) {
                 testInfo.ele("div", { class: "test-title" }, test.title);
