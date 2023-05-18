@@ -390,8 +390,10 @@ class HTMLReporter {
                   checkList.ele("li", { }, check);
                 }
 
-                if (testPayload.detailsLink) {
-                  testInfo.ele("a", { href: testPayload.detailsLink.url, target: "_blank" }, testPayload.detailsLink.text);
+                const hyperlinks = testInfo.ele("ol");
+                for (const hyperlink of testPayload.hyperlinks) {
+                  const listItem = hyperlinks.ele("li");
+                  listItem.ele("a", { href: hyperlink.url, target: "_blank" }, hyperlink.text);
                 }
               } catch (e) {
                 testInfo.ele("div", { class: "test-title" }, test.title);
